@@ -1,6 +1,33 @@
 ---
 title: "p8105_hw1_jz3036.Rmd"
 output: github_document
+author: "Junyuan Zheng (jz3036)"
+date: 2018-09-13
 ---
+Homework 1
 
-lalala
+# Problem 1
+
+Create a data frame comprised of:
+
+* A random sample of size 10 from a uniform[0, 5] distribution
+```{r}
+samp = runif(10, min=0, max=5)
+samp
+```
+* A logical vector indicating whether elements of the sample are greater than 2
+```{r}
+logi_vec = samp > 2
+logi_vec
+```
+* A (length-10) character vector
+```{r}
+char_vec = c('hello', 'there', '!', 'this', 'is', 'a', 'length-10', 'character', 'vector', ':)')
+char_vec
+```
+* A (length-10) factor vector
+```{r}
+fact_vec = factor(c('hello', 'there', '!', 'this', 'is', 'a', 'length-10', 'factor', 'vector', ':)'))
+fact_vec
+```
+
