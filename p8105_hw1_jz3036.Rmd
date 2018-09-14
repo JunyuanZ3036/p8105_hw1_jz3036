@@ -15,19 +15,52 @@ Create a data frame comprised of:
 samp = runif(10, min=0, max=5)
 samp
 ```
+
 * A logical vector indicating whether elements of the sample are greater than 2
 ```{r}
 logi_vec = samp > 2
 logi_vec
 ```
+
 * A (length-10) character vector
 ```{r}
 char_vec = c('hello', 'there', '!', 'this', 'is', 'a', 'length-10', 'character', 'vector', ':)')
 char_vec
 ```
+
 * A (length-10) factor vector
 ```{r}
 fact_vec = factor(c('hello', 'there', '!', 'this', 'is', 'a', 'length-10', 'factor', 'vector', ':)'))
 fact_vec
+```
+
+* Try to take the mean of each variable in your dataframe. What works and what doesn’t? Why?
+
+the mean() function works just fine for numeric values:
+```{r}
+mean(samp)
+```
+    
+the mean() function even works for logical vectors, the result reflect the proportion of True in the vector:
+    
+```{r}
+mean(logi_vec)
+```
+
+the mean() function could not work for charactor vector, since it makes no sense to count mean of charactors:
+```{r}
+mean(char_vec)
+```
+
+similarly, the mean() function could not work for charactor vector:
+```{r}
+mean(fact_vec)
+```
+
+* try using as.numeric() function to the logical, character, and factor variables
+```{r eval = FALSE}
+as.numeric(logi_vec)
+as.numeric(char_vec)
+as.numeric(fact_vec)
 ```
 
