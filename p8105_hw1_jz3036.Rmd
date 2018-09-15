@@ -86,3 +86,54 @@ as.numeric(new_char_vec)
 ```
 
 # Problem 2
+
+## Create a data frame comprised of:
+
+* x: a random sample of size 1000 from a standard Normal distribution.
+```{r}
+x = rnorm(1000)
+```
+
+* y: a random sample of size 1000 from a standard Normal distribution.
+```{r}
+y = rnorm(1000)
+```
+
+* A logical vector indicating whether the x + y > 0
+```{r}
+logi_vec = x + y > 0
+```
+
+* A numeric vector created by coercing the above logical vector
+```{r}
+nume_vec = as.numeric(logi_vec)
+```
+
+* A factor vector created by coercing the above logical vector
+```{r}
+fact_vec = as.factor(logi_vec)
+```
+
+* Vector x contains `r length(x)` numbers randomly generated from a standard Normal distribution. The mean of x is `r mean(x)`, and the median is `r median(x)`. The proportion of the 'TRUE' in the factor vector is `r table(fact_vec)['TRUE']/length(x)`.
+
+## Make a scatterplot of y vs x; color points using the logical variable
+```{r}
+library(tidyverse)
+plot_df = tibble(x = x, y = y)
+ggplot(plot_df, aes(x = x, y = y, color = logi_vec)) + geom_point()
+ggsave("scatter_plot.pdf", height = 4, width = 6)
+```
+
+## Make a scatterplot of y vs x; color points using the numeric variable
+```{r}
+library(tidyverse)
+plot_df = tibble(x = x, y = y)
+ggplot(plot_df, aes(x = x, y = y, color = nume_vec)) + geom_point()
+```
+
+## Make a scatterplot of y vs x; color points using the factor variable
+```{r}
+library(tidyverse)
+plot_df = tibble(x = x, y = y)
+ggplot(plot_df, aes(x = x, y = y, color = fact_vec)) + geom_point()
+```
