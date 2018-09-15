@@ -8,7 +8,7 @@ Homework 1
 
 # Problem 1
 
-Create a data frame comprised of:
+## Create a data frame comprised of:
 
 * A random sample of size 10 from a uniform[0, 5] distribution
 ```{r}
@@ -34,29 +34,29 @@ fact_vec = factor(c('hello', 'there', '!', 'this', 'is', 'a', 'length-10', 'fact
 fact_vec
 ```
 
-* Try to take the mean of each variable in your dataframe. What works and what doesn’t? Why?
+## Try to take the mean of each variable in your dataframe. What works and what doesn’t? Why?
 
-the mean() function works just fine for numeric values:
+* the mean() function works just fine for numeric values:
 ```{r}
 mean(samp)
 ```
     
-the mean() function even works for logical vectors, the result reflect the proportion of True in the vector:
-    
+* the mean() function even works for logical vectors, the result reflect the proportion of True in the vector:
 ```{r}
 mean(logi_vec)
 ```
 
-the mean() function could not work for charactor vector and returned Missing Value, since it makes no sense to count mean of charactors:
+* the mean() function could not work for charactor vector and returned Missing Value, since it makes no sense to count mean of charactors:
 ```{r}
 mean(char_vec)
 ```
 
-similarly, the mean() function could not work for charactor vector and returned Missing Value:
+* similarly, the mean() function could not work for charactor vector and returned Missing Value:
 ```{r}
 mean(fact_vec)
 ```
 
+## Write a code chunk that applies the as.numeric function to the logical, character, and factor variables (please show this chunk but not the output). What happens?
 * As shown in the chunk below, this is to try using as.numeric() function to the logical, character, and factor variables.
     * For logic vector, as.numeric() function converts "True" into 1, "False" into 0.
     * For character vector, since as.numeric() function doesn't know how to convert those in to number, it's forced to return "NA" as missing value.
@@ -67,16 +67,16 @@ as.numeric(char_vec)
 as.numeric(fact_vec)
 ```
 
-* Convert your character variable from character to factor to numeric. What happens?
-    * as.factor() function successfully converted character vector into factor, and automatically set the level to each character.
-    * then the as.numeric() function converted the new factor vector into numeric numbers according to the level of each character.
+## Convert your character variable from character to factor to numeric. What happens?
+* as.factor() function successfully converted character vector into factor, and automatically set the level to each character.
+* then the as.numeric() function converted the new factor vector into numeric numbers according to the level of each character.
 ```{r}
 new_fact_vec = as.factor(char_vec)
 new_fact_vec
 as.numeric(new_fact_vec)
 ```
 
-* convert your factor variable from factor to character to numeric. What happens?
+## convert your factor variable from factor to character to numeric. What happens?
     * as.character() function successfully concerted factor vertor into character vector.
     * While as.numeric() function still failed and returned missing value.
 ```{r}
@@ -113,6 +113,8 @@ nume_vec = as.numeric(logi_vec)
 ```{r}
 fact_vec = as.factor(logi_vec)
 ```
+
+## Write a short description of your vector using inline R code, including: * the size of the dataset * the mean and median of x * the proportion of cases for which the logical vector is TRUE
 
 * Vector x contains `r length(x)` numbers randomly generated from a standard Normal distribution. The mean of x is `r mean(x)`, and the median is `r median(x)`. The proportion of the 'TRUE' in the factor vector is `r table(fact_vec)['TRUE']/length(x)`.
 
