@@ -47,20 +47,42 @@ the mean() function even works for logical vectors, the result reflect the propo
 mean(logi_vec)
 ```
 
-the mean() function could not work for charactor vector, since it makes no sense to count mean of charactors:
+the mean() function could not work for charactor vector and returned Missing Value, since it makes no sense to count mean of charactors:
 ```{r}
 mean(char_vec)
 ```
 
-similarly, the mean() function could not work for charactor vector:
+similarly, the mean() function could not work for charactor vector and returned Missing Value:
 ```{r}
 mean(fact_vec)
 ```
 
-* try using as.numeric() function to the logical, character, and factor variables
+* As shown in the chunk below, this is to try using as.numeric() function to the logical, character, and factor variables.
+    * For logic vector, as.numeric() function converts "True" into 1, "False" into 0.
+    * For character vector, since as.numeric() function doesn't know how to convert those in to number, it's forced to return "NA" as missing value.
+    * for factor vector, as.numeric() function concerts it into numbers representing the level of each character in the vector.
 ```{r eval = FALSE}
 as.numeric(logi_vec)
 as.numeric(char_vec)
 as.numeric(fact_vec)
 ```
 
+* Convert your character variable from character to factor to numeric. What happens?
+    * as.factor() function successfully converted character vector into factor, and automatically set the level to each character.
+    * then the as.numeric() function converted the new factor vector into numeric numbers according to the level of each character.
+```{r}
+new_fact_vec = as.factor(char_vec)
+new_fact_vec
+as.numeric(new_fact_vec)
+```
+
+* convert your factor variable from factor to character to numeric. What happens?
+    * as.character() function successfully concerted factor vertor into character vector.
+    * While as.numeric() function still failed and returned missing value.
+```{r}
+new_char_vec = as.character(fact_vec)
+new_char_vec
+as.numeric(new_char_vec)
+```
+
+# Problem 2
